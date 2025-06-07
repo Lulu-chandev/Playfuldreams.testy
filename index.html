@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimoni Pelanggan - PT. Playful Dreams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500, #4ecdc4);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .customer-details h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .customer-location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-right: 2px;
+        }
+
+        .product-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            color: #444;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.8rem;
+            text-align: right;
+        }
+
+        .story-format {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .story-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .story-username {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .story-caption {
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .story-hashtags {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .review-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .video-review {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .video-icon {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .detailed-review {
+            background: #f0f8ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4ecdc4;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .pros, .cons {
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .pros {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+        }
+
+        .cons {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .pros h4, .cons h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .pros ul, .cons ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pros li::before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .cons li::before {
+            content: "⚠ ";
+            color: #ff9800;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .floating-emojis {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 1000;
+            animation: float-up 3s ease-out forwards;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💝 Testimoni Pelanggan</h1>
+            <p>Suara Asli dari Para Orang Tua yang Puas dengan PT. Playful Dreams</p>
+        </div>
+
+        <!-- Testimonial Cards -->
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="customer-info">
+                    <div class="avatar">SM</div>
+                    <div class="customer-details">
+                        <h3>Sari Melati</h3>
+                        <div class="customer-location">📍 Jakarta Selatan</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🧩 Puzzle Edukatif Hewan</div>
+                <div class="testimonial-text">
+                    "MashaaAllah, puzzle dari Playful Dreams ini bener-bener bagus banget! Anakku Kenzo (4 tahun) yang biasanya susah fokus, sekarang bisa main puzzle sampai sejam. Kualitasnya premium, gambarnya jelas, dan yang paling penting aman untuk anak. Packaging-nya juga rapi banget, cocok buat kado!"
+                </div>
+                <div class="date">📅 2 hari yang lalu</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="customer-info">
+                    <div class="avatar">RH</div>
+                    <div class="customer-details">
+                        <h3>Rina Handayani</h3>
+                        <div class="customer-location">📍 Bandung, Jawa Barat</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🎨 Art & Craft Set Deluxe</div>
+                <div class="testimonial-text">
+                    "Sebagai ibu dari 2 anak kembar (6 tahun), saya sangat terkesan dengan Art Set ini. Lengkap banget isinya! Ada crayon, spidol, kertas gambar, stiker, bahkan ada buku panduan aktivitas. Anak-anak jadi lebih kreatif dan ga main gadget terus. Worth banget untuk harga segini!"
+                </div>
+                <div class="date">📅 5 hari yang lalu</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="customer-info">
+                    <div class="avatar">AP</div>
+                    <div class="customer-details">
+                        <h3>Ahmad Pratama</h3>
+                        <div class="customer-location">📍 Surabaya, Jawa Timur</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🏗️ Building Blocks Set 200 pcs</div>
+                <div class="testimonial-text">
+                    "Istri saya awalnya ragu beli building blocks karena takut anaknya cepat bosan. Ternyata salah besar! Anak kami Fahri (5 tahun) sudah 3 minggu masih betah main ini. Blok-bloknya presisi, warnanya cerah, dan ada buku ide bangunan. Sekarang Fahri jago bikin rumah, mobil, bahkan robot!"
+                </div>
+                <div class="date">📅 1 minggu yang lalu</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="customer-info">
+                    <div class="avatar">LK</div>
+                    <div class="customer-details">
+                        <h3>Lisa Kusuma</h3>
+                        <div class="customer-location">📍 Yogyakarta</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🧸 Boneka Edukatif Musikal</div>
+                <div class="testimonial-text">
+                    "Boneka unicorn dari Playful Dreams ini jadi teman tidur favorit putri kecil saya, Aira (3 tahun). Bonekanya lembut banget, musiknya menenangkan, dan yang penting bisa ngajarin angka dan huruf. Aira jadi lebih cepat hafal ABC. Customer servicenya juga ramah banget!"
+                </div>
+                <div class="date">📅 3 hari yang lalu</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="customer-info">
+                    <div class="avatar">DW</div>
+                    <div class="customer-details">
+                        <h3>Dewi Wulandari</h3>
+                        <div class="customer-location">📍 Medan, Sumatera Utara</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🎲 Board Game Family Fun</div>
+                <div class="testimonial-text">
+                    "Board game ini jadi penyelamat weekend keluarga kami! Aturannya mudah dipahami, gambarnya lucu-lucu, dan bisa dimain dari umur 4-99 tahun. Anak-anak belajar strategi, sabar menunggu giliran, dan yang paling penting: family time jadi berkualitas. Recommended banget!"
+                </div>
+                <div class="date">📅 4 hari yang lalu</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="customer-info">
+                    <div class="avatar">TS</div>
+                    <div class="customer-details">
+                        <h3>Tina Sari</h3>
+                        <div class="customer-location">📍 Makassar, Sulawesi Selatan</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🚗 Set Kendaraan Mini</div>
+                <div class="testimonial-text">
+                    "Anak laki-laki saya Kevin (4 tahun) obsesi banget sama mobil-mobilan. Set kendaraan dari Playful Dreams ini detailnya luar biasa! Ada ambulans, pemadam kebakaran, polisi, bahkan truk sampah. Kevin jadi kenal berbagai profesi sambil main. Harganya juga masuk akal untuk kualitas sebagus ini."
+                </div>
+                <div class="date">📅 6 hari yang lalu</div>
+            </div>
+        </div>
+
+        <!-- Story Format Section -->
+        <div class="review-section">
+            <div class="section-title">📱 Format Story Instagram</div>
+            
+            <div class="story-format">
+                <div class="story-header">
+                    <div class="story-avatar">MR</div>
+                    <div class="story-username">mama_rafa_</div>
+                </div>
+                <div class="story-image">🧩✨</div>
+                <div class="story-caption">
+                    Alhamdulillah, puzzle dari @playfuldreams_id akhirnya sampai! Rafa langsung excited banget 😍 Kualitasnya beneran premium, potongannya pas, gambarnya jelas. Worth it banget! 
+                </div>
+                <div class="story-hashtags">
+                    #PlayfulDreams #PuzzleAnak #MainanEdukatif #AnakCerdas #TestimoniJujur
+                </div>
+            </div>
+
+            <div class="story-format">
+                <div class="story-header">
+                    <div class="story-avatar">IG</div>
+                    <div class="story-username">ibu_gita23</div>
+                </div>
+                <div class="story-image">🎨🌈</div>
+                <div class="story-caption">
+                    Art set lengkap dari @playfuldreams_id bikin weekend jadi colorful! Anak-anak happy, mama juga happy karena mereka ga cranky 😂 Thank you Playful Dreams! 
+                </div>
+                <div class="story-hashtags">
+                    #PlayfulDreams #ArtAndCraft #WeekendFun #AnakKreatif #MamaBahagia
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Review Section -->
+        <div class="review-section">
+            <div class="section-title">📝 Review Detail Produk</div>
+            
+            <div class="detailed-review">
+                <div class="customer-info">
+                    <div class="avatar">NS</div>
+                    <div class="customer-details">
+                        <h3>Novi Septiani - Guru PAUD</h3>
+                        <div class="customer-location">📍 Depok, Jawa Barat</div>
+                    </div>
+                </div>
+                <div class="rating">
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                    <span class="star">⭐</span>
+                </div>
+                <div class="product-tag">🧩 Puzzle Edukatif Series Lengkap</div>
+                <div class="testimonial-text">
+                    <strong>Review Lengkap sebagai Pendidik:</strong><br><br>
+                    Sebagai guru PAUD, saya sangat selektif dalam memilih mainan edukatif. Setelah 3 bulan menggunakan puzzle series dari Playful Dreams di kelas, saya bisa berikan review objektif:
+                </div>
+                
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4>✅ Kelebihan:</h4>
+                        <ul>
+                            <li>Material berkualitas tinggi, tidak mudah rusak</li>
+                            <li>Desain edukatif sesuai tahap perkembangan anak</li>
+                            <li>Warna tidak mudah pudar</li>
+                            <li>Kemasan praktis dan rapi</li>
+                            <li>Harga kompetitif untuk kualitas premium</li>
+                            <li>Customer service responsif</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>⚠️ Saran Perbaikan:</h4>
+                        <ul>
+                            <li>Varian tema bisa diperbanyak lagi</li>
+                            <li>Panduan aktivitas dalam Bahasa Indonesia</li>
+                            <li>Size puzzle untuk toddler bisa lebih besar</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="testimonial-text" style="margin-top: 15px;">
+                    <strong>Kesimpulan:</strong> Highly recommended untuk orang tua dan pendidik. Investasi terbaik untuk perkembangan kognitif anak. Rating: 5/5 ⭐
+                </div>
+            </div>
+
+            <div class="video-review">
+                <div class="video-icon">🎬 Video Review</div>
+                <div class="customer-info">
+                    <div class="avatar">RF</div>
+                    <div class="customer-details">
+                        <h3>Rifka Fauziah - Mom Blogger</h3>
+                        <div class="customer-location">📍 Tangerang, Banten</div>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    <strong>Unboxing & First Impression:</strong><br>
+                    "Hai moms! Hari ini aku mau share unboxing Building Blocks dari @playfuldreams_id. Packagingnya bagus banget, eco-friendly pula! Anak-anak langsung excited lihat warna-warnanya yang cerah. 
+
+                    <br><br><strong>Setelah 1 bulan pemakaian:</strong><br>
+                    Update review nih moms! Blok-bloknya masih seperti baru, tidak ada yang patah atau lecet. Anak-anak (3 & 5 tahun) masih semangat main setiap hari. Yang bikin seneng, mereka jadi lebih kreatif dan fokus. 
+
+                    <br><br>Full review ada di YouTube channel aku ya: 'Rifka's Family Vlog' 🎥"
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Photos Section -->
+        <div class="review-section">
+            <div class="section-title">📸 Foto dari Pelanggan</div>
+            
+            <div class="story-format">
+                <div class="story-header">
+                    <div class="story-avatar">PA</div>
+                    <div class="story-username">papa_arkan</div>
+                </div>
+                <div class="story-image">👨‍👦🏗️</div>
+                <div class="story-caption">
+                    Father & son building time! Arkan (4y) bikin istana dari building blocks @playfuldreams_id. Proud papa moment 🥺❤️ Mainan berkualitas bikin bonding time makin bermakna.
+                </div>
+                <div class="story-hashtags">
+                    #PlayfulDreams #FatherSonTime #BuildingBlocks #ProudPapa #QualityTime
+                </div>
+            </div>
+
+            <div class="story-format">
+                <div class="story-header">
+                    <div class="story-avatar">CL</div>
+                    <div class="story-username">cinta_langit</div>
+                </div>
+                <div class="story-image">🎨👩‍🎨</div>
+                <div class="story-caption">
+                    Little artist at work! Langit (5y) lagi bikin masterpiece pake art set dari @playfuldreams_id 🎨 Dari pagi sampai sore ga bosen-bosen. Mama happy, Langit happy! 
+                </div>
+                <div class="story-hashtags">
+                    #PlayfulDreams #LittleArtist #ArtSet #KreativitasAnak #MamaHappy
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive floating emojis when clicking testimonials
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const emojis = ['🎉', '✨', '💖', '🌟', '🎊', '💫'];
+                const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                const floatingEmoji = document.createElement('div');
+                floatingEmoji.className = 'floating-emojis';
+                floatingEmoji.textContent = emoji;
+                floatingEmoji.style.left = e.clientX + 'px';
+                floatingEmoji.style.top = e.clientY + 'px';
+                
+                document.body.appendChild(floatingEmoji);
+                
+                setTimeout(() => {
+                    floatingEmoji.remove();
+                }, 3000);
+            });
+        });
+
+        // Add smooth scroll animation for better UX
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Auto-generate random activity for dynamic feel
+        const activities = [
+            "🔥 Sarah dari Bekasi baru saja membeli Puzzle Edukatif",
+            "⭐ Kevin memberikan rating 5 bintang untuk Art Set",
+            "💝 Rina merekomendasikan Building Blocks ke 5 temannya",
+            "🎉 Ahmad baru saja repeat order untuk ketiga kalinya"
+        ];
+
+        function showActivity() {
+            const activity = activities[Math.floor(Math.random() * activities.length)];
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: white;
+                padding: 15px 20px;
+                border-radius: 50px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                z-index: 1000;
+                font-size: 0.9rem;
+                max-width: 300px;
+                animation: slideIn 0.5s ease, slideOut 0.5s ease 4s forwards;
+            `;
+            notification.textContent = activity;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Show activity notification every 10 seconds
+        setInterval(showActivity, 10000);
+
+        // Add CSS for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
